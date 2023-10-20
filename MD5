@@ -1,9 +1,9 @@
-fb718dbad5d1e7972c26c9538c2321e8 *DESCRIPTION
+1ada62cc065dff43b9dc36fb93bbfaf3 *DESCRIPTION
 f8092b8623120091d58bcdee980cc985 *NAMESPACE
-6758c2223c2404dfafe3ca3c2ae96f6b *NEWS.md
+8632c61a6c6abef6c646fe6092ed1068 *NEWS.md
 57915711f0012435b49a840adb78af84 *R/us_map.R
-b720894dd18095d94d76e8cd79038371 *R/usmapdata.R
-6522f31fc3963dccffe9d64f85c27ca7 *README.md
+892b3c77de8ba57a9e0b3848db2db260 *R/usmapdata.R
+3001b65935b4ec06cc26d229f9741089 *README.md
 6bfc4ce4ab739a8d0ad9a80ecefc704f *inst/extdata/county_fips.csv
 2ef17cf36bc2a43b2ba5c5d9678fa9ab *inst/extdata/state_fips.csv
 099989996dfb6b1f490e3f022c97532b *inst/extdata/us_counties.csv
@@ -14,6 +14,6 @@ cba08fabf01a95ddd15a7d273994b1ac *inst/extdata/us_states_centroids.csv
 16691cbc666d68b7f35eb1ec6c5089b2 *man/col_classes_centroids.Rd
 1d615d07b22f9cdae475a4f1725eb957 *man/col_classes_map.Rd
 58882232d124786653070849b3db2f0c *man/us_map.Rd
-afc39e312b39e21cb3b607de4859fd5b *man/usmapdata.Rd
+6b3bfb194007cfc0b258d30c84a8d6bc *man/usmapdata.Rd
 bf251104f9092feb5633a19ba9e587d6 *tests/testthat.R
-cdf48abd3ee52ef51aab4f8d058a3a11 *tests/testthat/test-usmap.R
+125791b4cd08758334dcb73d70884023 *tests/testthat/test-usmap.R
