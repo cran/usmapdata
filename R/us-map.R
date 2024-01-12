@@ -14,6 +14,11 @@
 #'  same name. The regions listed in the \code{include} parameter are applied first and the
 #'  \code{exclude} regions are then removed from the resulting map. Any excluded regions
 #'  not present in the included regions will be ignored.
+#' @param as_sf Whether the output should be an \link[sf]{sf} object or not. If
+#'  `FALSE` (the current default), the output will be a \link{data.frame}. This is a
+#'  temporary parameter to be used only during the shape file format upgrade.
+#'  It will be removed in the future once the upgrade is complete and the value
+#'  will effectively be `TRUE`.
 #'
 #' @return A data frame of US map coordinates divided by the desired \code{regions}.
 #'
@@ -24,20 +29,32 @@
 #' west_coast <- us_map(include = c("CA", "OR", "WA"))
 #'
 #' excl_west_coast <- us_map(exclude = c("CA", "OR", "WA"))
+#'
 #' @export
-us_map <- function(regions = c("states", "state", "counties", "county"),
-                   include = c(),
-                   exclude = c()) {
+us_map <- function(
+  regions = c("states", "state", "counties", "county"),
+  include = c(),
+  exclude = c(),
+  as_sf = FALSE
+) {
+  regions <- match.arg(regions)
 
-  regions_ <- match.arg(regions)
+  if (regions == "state") regions <- "states"
+  else if (regions == "county") regions <- "counties"
 
-  if (regions_ == "state") regions_ <- "states"
-  else if (regions_ == "county") regions_ <- "counties"
-
-  df <- utils::read.csv(system.file("extdata", paste0("us_", regions_, ".csv"),
-                                    package = "usmapdata"),
-                        colClasses = col_classes_map(regions_),
-                        stringsAsFactors = FALSE)
+  if (as_sf) {
+    df <- sf::read_sf(
+      system.file("extdata", paste0("us_", regions, ".gpkg"),
+                  package = "usmapdata")
+    )
+  } else {
+    df <- utils::read.csv(
+      system.file("extdata", "legacy", paste0("us_", regions, ".csv"),
+                  package = "usmapdata"),
+      colClasses = col_classes_map(regions),
+      stringsAsFactors = FALSE
+    )
+  }
 
   if (length(include) > 0) {
     df <- df[df$full %in% include |
@@ -53,7 +70,7 @@ us_map <- function(regions = c("states", "state", "counties", "county"),
                  substr(df$fips, 1, 2) %in% exclude), ]
   }
 
-  df
+  df[order(df$abbr), ]
 }
 
 #' Retrieve centroid labels
@@ -61,16 +78,33 @@ us_map <- function(regions = c("states", "state", "counties", "county"),
 #' @param regions The region breakdown for the map, can be one of
 #'   (\code{"states"}, \code{"counties"}, as specified by the internal file names.
 #'   The default is \code{"states"}.
+#' @param as_sf Whether the output should be an \link[sf]{sf} object or not. If
+#'  `FALSE` (the current default), the output will be a \link{data.frame}. This is a
+#'  temporary parameter to be used only during the shape file format upgrade.
+#'  It will be removed in the future once the upgrade is complete and the value
+#'  will effectively be `TRUE`.
 #'
 #' @return A data frame of state or county centroid labels and positions
 #'   relative to the coordinates returned by the \code{us_map} function.
 #'
 #' @export
-centroid_labels <- function(regions = c("states", "counties")) {
-  utils::read.csv(system.file("extdata", paste0("us_", regions, "_centroids.csv"),
-                              package = "usmapdata"),
-                  colClasses = col_classes_centroids(regions),
-                  stringsAsFactors = FALSE)
+centroid_labels <- function(
+  regions = c("states", "counties"),
+  as_sf = FALSE
+) {
+  regions <- match.arg(regions)
+
+  if (as_sf) {
+    sf::read_sf(
+      system.file("extdata", paste0("us_", regions, "_centroids.gpkg"),
+                  package = "usmapdata")
+    )
+  } else {
+    utils::read.csv(system.file("extdata", "legacy", paste0("us_", regions, "_centroids.csv"),
+                                package = "usmapdata"),
+                    colClasses = col_classes_centroids(regions),
+                    stringsAsFactors = FALSE)
+  }
 }
 
 #' Map data column classes
