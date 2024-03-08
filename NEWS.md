@@ -1,4 +1,13 @@
+# usmapdata 0.2.2
+
+### Improvements
+* Improve language in `DESCRIPTION` and minor documentation, see [Issue #19](https://github.com/pdil/usmapdata/issues/19).
+
+### Bug Fixes
+* `alaska_bbox()` and `hawaii_bbox()` now output correct `sf` type (`sfc polygon`).
+
 # usmapdata 0.2.1
+Released Sunday, February 4, 2024.
 
 This update continues the `sf` migration by setting the `as_sf` parameter to default to the behavior of `TRUE`. This parameter no longer has any effect, as explained below. The next phase will involve updating `usmap` to no longer make use of this parameter, in which case it can be completely removed.
 
@@ -7,7 +16,7 @@ This update continues the `sf` migration by setting the `as_sf` parameter to def
 * The `as_sf` parameter is now deprecated and no longer has any effect.
   * As part of this removal, the default behavior for `us_map()`, `centroid_labels()`, and `fips_data()` is equivalent to `as_sf = TRUE` which is to return their data as an `sf` object (see `0.2.0` release notes for more details).
   * This parameter will be completely removed in a future version but continues to exist for compatibility reasons.
-* Legacy `.csv` files containing mapping and FIPS data have been removed, greatly reducing package size.  
+* Legacy `.csv` files containing mapping and FIPS data have been removed, greatly reducing package size.
 
 # usmapdata 0.2.0
 Released Friday, January 12, 2024.
