@@ -1,6 +1,6 @@
-4f3f67d5c74f061daed440fb3ab76130 *DESCRIPTION
+da1dcc13d9fbff63d74724440c2c16a6 *DESCRIPTION
 f7255e6bacb8654488f2b3ad2184c8e8 *NAMESPACE
-8420a7ab5b11ca9bb683285c0119d82c *NEWS.md
+080041d15de6dfa2243cacfa5deb8a2c *NEWS.md
 ae60f701bf4df569ed70f18c8368d527 *R/create-us-map.R
 92c22c3b0669b7c11ae827db720a580a *R/fips-data.R
 9b41fef70080b1658f8c6186461da7a2 *R/us-map.R
@@ -19,6 +19,10 @@ bd48ca7ed1e9928dfe391485f1ad841b *inst/extdata/2023/us_counties.gpkg
 eff8babad6ca2dc6a0126a5cb8581d30 *inst/extdata/2023/us_counties_centroids.gpkg
 ca970f5402600aa802fe27dc813e7c7e *inst/extdata/2023/us_states.gpkg
 9befd004da98b72a6ff6438844bbc548 *inst/extdata/2023/us_states_centroids.gpkg
+4a073688d7c635be0ff793587f6b643b *inst/extdata/2024/us_counties.gpkg
+979b18ad398a186ce28d9e4de328d155 *inst/extdata/2024/us_counties_centroids.gpkg
+45f2af18be0597368df96db244953190 *inst/extdata/2024/us_states.gpkg
+afe3e6eac7a1b6974a9fe1b00ccd3a8d *inst/extdata/2024/us_states_centroids.gpkg
 dc28e5a092127b693d298a5a93710a62 *man/available_map_years.Rd
 c94db73b8b59c22c87701600816286d7 *man/centroid_labels.Rd
 75ff25788a44ef86516cc41e8491299d *man/create_us_map.Rd
